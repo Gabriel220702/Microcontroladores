@@ -1,0 +1,42 @@
+[PROJECT]
+Target=Mini Zumo Robot.hex
+Processor_Text=PIC18F2550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Mini Zumo Robot.c
+[Mini Zumo Robot.c]
+Type=4
+[mru-list]
+1=Mini Zumo Robot.c
+
+[defines]
+buildcount=4
+
+[ProjectLog]
+Days=1
+D1=24-02-2024
+D1_L=8
+D1_L1=[54413]Stopped Editing.
+TotalEdit=1
+TotalDebug=0
+D1_E=1
+D1_D=0
+D1_L2=[54621]Project Closed.
+D1_L3=[58929]Project Opened.
+D1_L4=[59242]Project Closed.
+D1_L5=[62726]Project Opened.
+D1_L6=[67662]Project Closed.
+D1_L7=[70062]Project Opened.
+D1_L8=[71318]Project Closed.
+
+[Opened Files]
+1=Mini Zumo Robot.c
+t1=1
+Count=1
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=Mini Zumo Robot (main)

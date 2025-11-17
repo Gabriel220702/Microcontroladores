@@ -1,0 +1,52 @@
+/******************************************************
+ * ****************************************************
+ * ****  CONTROL LAMPARA CON RELÉ                 *****
+ * ****  By: SERGIO ANDRES CASTAÑO GIRALDO        *****
+ * ****  https://controlautomaticoeducacion.com/  *****
+ * ****                                           *****
+ * ****************************************************
+ */
+
+#INCLUDE <18f4550.h>
+#FUSES XT,NOPROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP
+#USE DELAY(internal=4MHz)
+
+// Memoria de los puertos
+//18F4550
+#BYTE PORTA = 0xf80
+#BYTE PORTB = 0xf81
+//16F887 / 16F877A
+//#byte porta = 5 
+//#byte portb = 6 
+
+//Definiciones
+#DEFINE Rele PORTA,0
+#DEFINE Push PORTB,0
+
+VOID MAIN()
+{
+   BOOLEAN start=0;
+   SET_TRIS_A(0);             //Configura el puerto A como Salida
+   SET_TRIS_B(0b00000001);    //Configura el puerto RB0 Entrada
+   PORTA=0;
+   WHILE(TRUE)                // Haga por siempre
+   {
+      //Pregunta por el botón
+      if(bit_test(Push))
+      {
+         delay_ms(200);       //Anti-Debounce
+         //Instrucción para contabilizar una pulsación del botón
+         while(bit_test(Push))
+         {
+            delay_ms(200);       //Anti-Debounce
+         }
+         start = !start;      //Cambia el estado lógico de start
+      }
+      
+      //Activa o desactiva el relé
+      if(start)
+         bit_set(rele);    //Activa Rele
+      else 
+         bit_clear(rele);  //Desactiva rele
+   }
+}

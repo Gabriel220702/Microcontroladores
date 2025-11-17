@@ -1,0 +1,49 @@
+
+ROM used:   176/32768 (1%)
+            176/32768 (1%) including unused fragments
+
+            0.2 Average locations per line
+            5.2 Average locations per statement
+
+RAM used:   4/2048 (0%) at main() level
+            4/2048 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   71    34 100  Mini Zumo Robot.c
+  789     0   0  C:\Program Files (x86)\PICC\Devices\18F2550.h
+----- -----
+  860    34 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     14   4    0     32  1.0  stop
+0     22   6    0     67  1.2  avanzar
+0     22   6    0     67  1.2  retroceder
+0     22   6    0     67  1.2  girar_izquierda
+0     22   6    0     67  1.2  girar_derecha
+0     70  20    0    223  2.6  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               6
+    Statements              34
+    Comments                175
+    Volume (V)              844
+    Difficulty (D)          8.3
+    Effort to implement (E) 7032
+    Time to implement (T)   7 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   4
+    Maintainability (MI)    161
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE   172  32592  
+
+
+

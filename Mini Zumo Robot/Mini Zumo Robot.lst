@@ -1,0 +1,190 @@
+CCS PCH C Compiler, Version 5.076, 56587               24-feb.-24 19:29
+
+               Filename:   E:\Mini Zumo Robot\Mini Zumo Robot.lst
+
+               ROM used:   176 bytes (1%)
+                           Largest free fragment is 32592
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   006A
+.................... #include <18F2550.h>            // Incluye el archivo de cabecera del microcontrolador PIC 18F2550 
+.................... //////////// Standard Header file for the PIC18F2550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F2550 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10                 // Configura la resolución del conversor analógico a digital (ADC) a 10 bits 
+....................  
+.................... #FUSES NOWDT                    // Configura el bit de No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT               // Configura el bit de No Brownout 
+.................... #FUSES NOLVP                    // Configura el bit de No Low-Voltage Programming 
+.................... #FUSES NOXINST                  // Configura el bit de No Extended Instruction Set 
+.................... #FUSES PLL1                     // Configura el PLL en 1x 
+....................  
+.................... #use delay(crystal=20000000)    // Configura la frecuencia del oscilador de cristal en 20 MHz 
+.................... #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4,PIN_B3,PIN_B2,PIN_B1,PIN_B0 )  // Configura los pines B0-B7 como salidas fijas 
+....................  
+.................... #define dir_izq         PIN_B0   // Define el pin B0 como dir_izq (dirección del motor izquierdo) 
+.................... #define en_izq          PIN_B1   // Define el pin B1 como en_izq (activación del motor izquierdo) 
+.................... #define dir_der         PIN_B2   // Define el pin B2 como dir_der (dirección del motor derecho) 
+.................... #define en_der          PIN_B3   // Define el pin B3 como en_der (activación del motor derecho) 
+.................... #define izquierda_pin   PIN_B4   // Define el pin B4 como izquierda_pin (botón virtual para girar a la izquierda) 
+.................... #define derecha_pin     PIN_B5   // Define el pin B5 como derecha_pin (botón virtual para girar a la derecha) 
+.................... #define retroceso_pin   PIN_B6   // Define el pin B6 como retroceso_pin (botón virtual para retroceder) 
+.................... #define adelante_pin    PIN_B7   // Define el pin B7 como adelante_pin (botón virtual para avanzar hacia adelante) 
+....................  
+.................... void stop() { 
+....................    output_low(en_izq);          // Apaga el motor izquierdo 
+*
+005C:  MOVLW  00
+005E:  MOVWF  F93
+0060:  BCF    F8A.1
+....................    output_low(en_der);          // Apaga el motor derecho 
+0062:  MOVWF  F93
+0064:  BCF    F8A.3
+0066:  GOTO   00AC (RETURN)
+.................... } 
+....................  
+.................... void avanzar() { 
+....................    output_low(dir_izq);         // Configura la dirección del motor izquierdo hacia adelante 
+*
+0004:  MOVLW  00
+0006:  MOVWF  F93
+0008:  BCF    F8A.0
+....................    output_high(en_izq);         // Enciende el motor izquierdo 
+000A:  MOVWF  F93
+000C:  BSF    F8A.1
+....................    output_low(dir_der);         // Configura la dirección del motor derecho hacia adelante 
+000E:  MOVWF  F93
+0010:  BCF    F8A.2
+....................    output_high(en_der);         // Enciende el motor derecho 
+0012:  MOVWF  F93
+0014:  BSF    F8A.3
+0016:  GOTO   0084 (RETURN)
+.................... } 
+....................  
+.................... void retroceder() { 
+....................    output_high(dir_izq);        // Configura la dirección del motor izquierdo hacia atrás 
+001A:  MOVLW  00
+001C:  MOVWF  F93
+001E:  BSF    F8A.0
+....................    output_high(en_izq);         // Enciende el motor izquierdo 
+0020:  MOVWF  F93
+0022:  BSF    F8A.1
+....................    output_high(dir_der);        // Configura la dirección del motor derecho hacia atrás 
+0024:  MOVWF  F93
+0026:  BSF    F8A.2
+....................    output_high(en_der);         // Enciende el motor derecho 
+0028:  MOVWF  F93
+002A:  BSF    F8A.3
+002C:  GOTO   0090 (RETURN)
+.................... } 
+....................  
+.................... void girar_izquierda() { 
+....................    output_high(dir_izq);        // Configura la dirección del motor izquierdo hacia atrás 
+0030:  MOVLW  00
+0032:  MOVWF  F93
+0034:  BSF    F8A.0
+....................    output_high(en_izq);         // Enciende el motor izquierdo 
+0036:  MOVWF  F93
+0038:  BSF    F8A.1
+....................    output_low(dir_der);         // Configura la dirección del motor derecho hacia adelante 
+003A:  MOVWF  F93
+003C:  BCF    F8A.2
+....................    output_high(en_der);         // Enciende el motor derecho 
+003E:  MOVWF  F93
+0040:  BSF    F8A.3
+0042:  GOTO   009C (RETURN)
+.................... } 
+....................  
+.................... void girar_derecha() { 
+....................    output_low(dir_izq);         // Configura la dirección del motor izquierdo hacia adelante 
+0046:  MOVLW  00
+0048:  MOVWF  F93
+004A:  BCF    F8A.0
+....................    output_high(en_izq);         // Enciende el motor izquierdo 
+004C:  MOVWF  F93
+004E:  BSF    F8A.1
+....................    output_high(dir_der);        // Configura la dirección del motor derecho hacia atrás 
+0050:  MOVWF  F93
+0052:  BSF    F8A.2
+....................    output_high(en_der);         // Enciende el motor derecho 
+0054:  MOVWF  F93
+0056:  BSF    F8A.3
+0058:  GOTO   00A8 (RETURN)
+.................... } 
+....................  
+.................... void main() { 
+*
+006A:  CLRF   FF8
+006C:  BCF    FD0.7
+006E:  MOVF   FC1,W
+0070:  ANDLW  C0
+0072:  IORLW  0F
+0074:  MOVWF  FC1
+0076:  MOVLW  07
+0078:  MOVWF  FB4
+....................    while(TRUE) {                            // Bucle principal 
+....................       if (input(adelante_pin)) {            // Verifica si el botón de avanzar está presionado 
+007A:  MOVLW  00
+007C:  MOVWF  F93
+007E:  BTFSS  F81.7
+0080:  BRA    0086
+....................          avanzar();                         // Llama a la función para avanzar 
+0082:  BRA    0004
+....................       } else if (input(retroceso_pin)) {    // Verifica si el botón de retroceder está presionado 
+0084:  BRA    00AC
+0086:  MOVLW  00
+0088:  MOVWF  F93
+008A:  BTFSS  F81.6
+008C:  BRA    0092
+....................          retroceder();                      // Llama a la función para retroceder 
+008E:  BRA    001A
+....................       } else if (input(izquierda_pin)) {    // Verifica si el botón de girar a la izquierda está presionado 
+0090:  BRA    00AC
+0092:  MOVLW  00
+0094:  MOVWF  F93
+0096:  BTFSS  F81.4
+0098:  BRA    009E
+....................          girar_izquierda();                 // Llama a la función para girar a la izquierda 
+009A:  BRA    0030
+....................       } else if (input(derecha_pin)) {      // Verifica si el botón de girar a la derecha está presionado 
+009C:  BRA    00AC
+009E:  MOVLW  00
+00A0:  MOVWF  F93
+00A2:  BTFSS  F81.5
+00A4:  BRA    00AA
+....................          girar_derecha();                   // Llama a la función para girar a la derecha 
+00A6:  BRA    0046
+....................       } else { 
+00A8:  BRA    00AC
+....................          stop();                            // Si no se presiona ningún botón, detiene el robot 
+00AA:  BRA    005C
+....................       } 
+00AC:  BRA    007A
+....................    } 
+.................... } 
+....................  
+00AE:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CC04   PLL5 CPUDIV1 NOUSBDIV HS FCMEN IESO
+   Word  2: 1E38   PUT NOBROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

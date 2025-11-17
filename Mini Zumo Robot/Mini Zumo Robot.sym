@@ -1,0 +1,67 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  avanzar
+00001A  retroceder
+000030  girar_izquierda
+000046  girar_derecha
+00005C  stop
+00006A  MAIN
+00006A  @cinit1
+00007A  @cinit2
+
+Project Directory:
+    E:\Mini Zumo Robot\
+
+Project Files:
+    Mini Zumo Robot.c                                       [24-feb.-24 15:01  CRC=954259D7]
+    C:\Program Files (x86)\PICC\Devices\18F2550.h           [15-ene.-18 15:57  CRC=9C52E89C]
+
+Source signature=CDE82B0F
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=D5C5
+
+Units:
+    Mini Zumo Robot (main)
+
+Compiler Settings:
+    Processor:      PIC18F2550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Mini Zumo Robot.xsym
+    Errors:      Mini Zumo Robot.err
+    Ext Symbols: Mini Zumo Robot.esym
+    INHX32:      Mini Zumo Robot.hex
+    Symbols:     Mini Zumo Robot.sym
+    List:        Mini Zumo Robot.lst
+    Debug/COFF:  Mini Zumo Robot.cof
+    Project:     Mini Zumo Robot.ccspjt
+    Call Tree:   Mini Zumo Robot.tre
+    Statistics:  Mini Zumo Robot.STA

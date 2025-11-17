@@ -1,0 +1,33 @@
+[PROJECT]
+Target=Pantalla LCD.hex
+Processor_Text=PIC16F877
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Pantalla LCD.c
+[Pantalla LCD.c]
+Type=4
+[mru-list]
+1=Pantalla LCD.c
+
+[defines]
+buildcount=2
+
+[Opened Files]
+1=Pantalla LCD.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=Pantalla LCD (main)
+
+[ProjectLog]
+Days=1
+D1=04-03-2024
+D1_L=2
+D1_L1=[39441]Stopped Editing.
+TotalEdit=14
+TotalDebug=0
+D1_E=14
+D1_D=0
+D1_L2=[39441]Project Closed.

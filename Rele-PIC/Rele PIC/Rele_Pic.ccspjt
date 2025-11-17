@@ -1,0 +1,55 @@
+[defines]
+buildcount=7
+
+[Opened Files]
+1=Rele_Pic.c
+t1=25
+2=..\Reloj\usoReloj.c
+t2=1
+Count=1
+[PROJECT]
+Target=Rele_Pic.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Rele_Pic.c
+[Rele_Pic.c]
+Type=4
+[mru-list]
+1=Rele_Pic.c
+
+[ProjectLog]
+Days=3
+D1=21-06-2020
+D1_L=10
+D1_L1=[56459]Stopped Editing.
+TotalEdit=24
+TotalDebug=0
+D1_E=21
+D1_D=0
+D1_L2=[56459]Project Closed.
+D1_L3=[56546]Project Opened.
+D1_L4=[56626]Started Editing.
+D1_L5=[56991]Stopped Editing.
+D1_L6=[58968]Started Editing.
+D1_L7=[59299]Stopped Editing.
+D1_L8=[59432]Started Editing.
+D1_L9=[59734]Stopped Editing.
+D1_L10=[60280]Project Closed.
+D2=05-03-2024
+D2_L=1
+D2_L1=[85492]Project Opened.
+D3=06-03-2024
+D3_L=3
+D3_L1=[490]Started Editing.
+D3_L2=[939]Stopped Editing.
+D3_E=3
+D3_D=0
+D3_L3=[2215]Project Closed.
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=Rele_Pic (main)
