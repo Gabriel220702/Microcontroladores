@@ -1,0 +1,37 @@
+[PROJECT]
+Target=Relevador de Estado Sólido.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Relevador de Estado Sólido.c
+[Relevador de Estado Sólido.c]
+Type=4
+[mru-list]
+1=Relevador de Estado Sólido.c
+
+[defines]
+buildcount=8
+
+[ProjectLog]
+Days=1
+D1=11-03-2024
+D1_L=6
+D1_L1=[84184]Stopped Editing.
+D1_L2=[84188]Started Editing.
+D1_L3=[84872]Stopped Editing.
+D1_L4=[85190]Started Editing.
+D1_L5=[85618]Stopped Editing.
+TotalEdit=9
+TotalDebug=0
+D1_E=9
+D1_D=0
+D1_L6=[85928]Project Closed.
+
+[Opened Files]
+1=Relevador de Estado Sólido.c
+t1=17
+Count=1
+[Units]
+Count=1
+1=Relevador de Estado Sólido (main)

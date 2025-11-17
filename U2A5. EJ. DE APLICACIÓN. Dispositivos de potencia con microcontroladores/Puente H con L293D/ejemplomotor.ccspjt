@@ -1,0 +1,44 @@
+[PROJECT]
+Target=ejemplomotor.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=ejemplomotor.c
+[ejemplomotor.c]
+Type=4
+[mru-list]
+1=ejemplomotor.c
+
+[defines]
+buildcount=9
+
+[ProjectLog]
+Days=1
+D1=12-03-2024
+D1_L=10
+D1_L1=[44763]Stopped Editing.
+D1_L2=[44790]Started Editing.
+D1_L3=[46036]Stopped Editing.
+D1_L4=[46375]Started Editing.
+D1_L5=[46676]Stopped Editing.
+D1_L6=[46796]Started Editing.
+D1_L7=[47101]Stopped Editing.
+TotalEdit=19
+TotalDebug=0
+D1_E=19
+D1_D=0
+D1_L8=[47885]Project Closed.
+D1_L9=[64831]Project Opened.
+D1_L10=[65595]Project Closed.
+
+[Opened Files]
+1=ejemplomotor.c
+t1=35
+Count=1
+[Units]
+Count=1
+1=ejemplomotor (main)
+
+[fileformats]
+forcecoff=0

@@ -1,0 +1,66 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005.0   main.start
+006     @delay_ms1.P1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000030  @cinit1
+000030  main
+000046  @cinit2
+
+Project Directory:
+    F:\ITSRLL\6to Semestre\Microcontroladores\U2A5. EJ. DE APLICACIÓN. Dispositivos de potencia con microcontroladores\Relevador Mecanico con Transistor\
+
+Project Files:
+    Relevador Mecanico con Transistor.c                     [11-mar.-24 22:41  CRC=A18A7BD1]
+    C:\Program Files (x86)\PICC\Devices\18f4550.h           [15-ene.-18 15:57  CRC=06200171]
+
+Source signature=ADCA7EB3
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=BB4F
+
+Units:
+    Relevador Mecanico con Transistor (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Relevador Mecanico con Transistor.xsym
+    Errors:      Relevador Mecanico con Transistor.err
+    Ext Symbols: Relevador Mecanico con Transistor.esym
+    INHX32:      Relevador Mecanico con Transistor.hex
+    Symbols:     Relevador Mecanico con Transistor.sym
+    List:        Relevador Mecanico con Transistor.lst
+    Debug/COFF:  Relevador Mecanico con Transistor.cof
+    Project:     Relevador Mecanico con Transistor.ccspjt
+    Call Tree:   Relevador Mecanico con Transistor.tre
+    Statistics:  Relevador Mecanico con Transistor.STA

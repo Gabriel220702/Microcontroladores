@@ -1,0 +1,37 @@
+[PROJECT]
+Target=Relevador Mecanico con Transistor.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Relevador Mecanico con Transistor.c
+[Relevador Mecanico con Transistor.c]
+Type=4
+[mru-list]
+1=Relevador Mecanico con Transistor.c
+
+[defines]
+buildcount=3
+
+[ProjectLog]
+Days=1
+D1=11-03-2024
+D1_L=6
+D1_L1=[80776]Stopped Editing.
+D1_L2=[80781]Started Editing.
+D1_L3=[81082]Stopped Editing.
+D1_L4=[81630]Started Editing.
+D1_L5=[81973]Stopped Editing.
+TotalEdit=1
+TotalDebug=0
+D1_E=1
+D1_D=0
+D1_L6=[83847]Project Closed.
+
+[Opened Files]
+1=Relevador Mecanico con Transistor.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=Relevador Mecanico con Transistor (main)

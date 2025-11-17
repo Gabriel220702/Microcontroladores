@@ -1,0 +1,47 @@
+#INCLUDE <18f4550.h>
+#fuses XT,NOPROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP,WRT
+#device adc=10
+#use delay(clock=4000000,crystal)//Crystal Externo 4MHz
+#byte PORTB=0xF81
+#byte PORTD=0xF83
+#define SW PORTD,0
+
+int16 velocidad;
+int CONT;
+byte const HORARIO[4] = {0b1100,0b0110,0b0011,0b1001};               
+byte const ANTIH[4] ={0b1001,0b0011,0b0110,0b1100};
+                           
+void main()
+{
+   setup_adc(adc_clock_internal);   //Selecciono reloj interno para conversion
+   setup_adc_ports(all_analog);     //Pongo todo el puerto a analogo
+   set_tris_a(0b00000001);          //Pongo el RA0 como entrada
+   SET_TRIS_D(0B11111111);                //Configura el puerto D
+   SET_TRIS_B(0B00000000);                //Configura el puerto B
+
+   int boton_estado_anterior = 0;
+   int boton_estado_actual;
+
+   while(true){
+       boton_estado_actual = input(SW);  // Lee el estado actual del botón
+
+       // Verifica si el botón ha sido presionado
+       if(boton_estado_actual && !boton_estado_anterior){
+           // Si el botón ha sido presionado, cambia la dirección del giro
+           CONT = 0;
+           while(CONT < 4){
+               PORTB = (HORARIO[CONT]); //Envía al PORTB >> HORARIO
+               delay_ms(velocidad);     //Retardo de velocidad
+               CONT++;                       //Incremente la variable cont
+           }
+       }
+
+       // Actualiza el estado anterior del botón
+       boton_estado_anterior = boton_estado_actual;
+
+       if(!boton_estado_actual) {
+           delay_ms(50); // Pequeño retraso para evitar rebotes del botón
+       }
+   }
+}
+

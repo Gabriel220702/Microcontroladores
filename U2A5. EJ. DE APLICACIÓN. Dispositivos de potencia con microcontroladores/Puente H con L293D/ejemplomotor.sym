@@ -1,0 +1,67 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005     main.boton_estado_anterior
+006     main.boton_estado_actual
+007     main.direccion_1
+008     main.direccion_2
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  main
+000004  @cinit1
+000014  @cinit2
+
+Project Directory:
+    F:\ITSRLL\6to Semestre\Microcontroladores\U2A5. EJ. DE APLICACIÓN. Dispositivos de potencia con microcontroladores\Puente H con L293D\
+
+Project Files:
+    ejemplomotor.c                                          [12-mar.-24 13:00  CRC=12E0FC13]
+    C:\Program Files (x86)\PICC\Devices\18f4550.h           [15-ene.-18 15:57  CRC=06200171]
+
+Source signature=1F20FEF5
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=78E7
+
+Units:
+    ejemplomotor (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   ejemplomotor.xsym
+    Errors:      ejemplomotor.err
+    Ext Symbols: ejemplomotor.esym
+    INHX32:      ejemplomotor.hex
+    Symbols:     ejemplomotor.sym
+    List:        ejemplomotor.lst
+    Debug/COFF:  ejemplomotor.cof
+    Project:     ejemplomotor.ccspjt
+    Call Tree:   ejemplomotor.tre
+    Statistics:  ejemplomotor.STA

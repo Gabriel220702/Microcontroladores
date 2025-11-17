@@ -1,0 +1,38 @@
+#include <18f4550.h>
+#fuses XT,NOPROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP,WRT
+#device adc=10
+#use delay(clock=4000000,crystal)
+
+#define SW PIN_D0
+#define MOTOR_PIN_A PIN_B0
+#define MOTOR_PIN_B PIN_B1
+
+void main() {
+    setup_adc_ports(NO_ANALOGS);
+    set_tris_d(0b00000001);  // Configure el pin del botón como entrada
+    set_tris_b(0b00000000);  // Configure los pines del motor como salida
+    output_b(0x00);           // Apaga el motor inicialmente
+    
+    int boton_estado_anterior = 0;
+    int boton_estado_actual;
+
+    while (true) {
+        // Lee el estado actual del botón
+        boton_estado_actual = input(SW);
+
+        // Verifica si el botón ha sido presionado
+        if (boton_estado_actual && !boton_estado_anterior) {
+            // Cambia la dirección del giro del motor
+            output_high(MOTOR_PIN_A);
+            output_low(MOTOR_PIN_B);
+            delay_ms(1000);  // Tiempo de giro (1 segundo)
+            // Apaga el motor
+            output_low(MOTOR_PIN_A);
+            output_low(MOTOR_PIN_B);
+        }
+
+        // Actualiza el estado anterior del botón
+        boton_estado_anterior = boton_estado_actual;
+    }
+}
+

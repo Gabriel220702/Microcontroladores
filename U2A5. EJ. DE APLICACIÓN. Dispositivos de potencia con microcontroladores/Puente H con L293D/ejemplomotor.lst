@@ -1,0 +1,152 @@
+CCS PCH C Compiler, Version 5.076, 56587               12-mar.-24 13:00
+
+               Filename:   F:\ITSRLL\6to Semestre\Microcontroladores\U2A5. EJ. DE APLICACIÓN. Dispositivos de potencia con microcontroladores\Puente H con L293D\ejemplomotor.lst
+
+               ROM used:   138 bytes (0%)
+                           Largest free fragment is 32630
+               RAM used:   8 (0%) at main() level
+                           8 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0004
+.................... #include <18f4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #fuses XT,NOPROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP,WRT 
+.................... #device adc=10 
+.................... #use delay(clock=4000000,crystal) 
+....................  
+.................... #define SW PIN_D0 
+.................... #define MOTOR_PIN_A_1 PIN_B0 
+.................... #define MOTOR_PIN_B_1 PIN_B1 
+.................... #define MOTOR_PIN_A_2 PIN_B2 
+.................... #define MOTOR_PIN_B_2 PIN_B3 
+....................  
+.................... void main() { 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  MOVF   FC1,W
+000A:  ANDLW  C0
+000C:  IORLW  0F
+000E:  MOVWF  FC1
+0010:  MOVLW  07
+0012:  MOVWF  FB4
+....................     setup_adc_ports(NO_ANALOGS); 
+0014:  MOVF   FC1,W
+0016:  ANDLW  C0
+0018:  IORLW  0F
+001A:  MOVWF  FC1
+....................     set_tris_d(0b00000001);  // Configura el pin del botón como entrada 
+001C:  MOVLW  01
+001E:  MOVWF  F95
+....................     set_tris_b(0b00000000);  // Configura los pines del motor como salida 
+0020:  MOVLW  00
+0022:  MOVWF  F93
+....................     output_b(0x00);           // Apaga ambos motores inicialmente 
+0024:  CLRF   F93
+0026:  CLRF   F8A
+....................      
+....................     int boton_estado_anterior = 0; 
+....................     int boton_estado_actual; 
+....................     int direccion_1 = 1;  // Variable para almacenar la dirección del giro del motor 1 (1 o -1) 
+....................     int direccion_2 = 1;  // Variable para almacenar la dirección del giro del motor 2 (1 o -1) 
+0028:  CLRF   05
+002A:  MOVLW  01
+002C:  MOVWF  07
+002E:  MOVWF  08
+....................  
+....................     while (true) { 
+....................         // Lee el estado actual del botón 
+....................         boton_estado_actual = input(SW); 
+0030:  BSF    F95.0
+0032:  CLRF   06
+0034:  BTFSC  F83.0
+0036:  INCF   06,F
+....................  
+....................         // Verifica si el botón ha sido presionado 
+....................         if (boton_estado_actual && !boton_estado_anterior) { 
+0038:  MOVF   06,F
+003A:  BTFSC  FD8.2
+003C:  GOTO   0080
+0040:  MOVF   05,F
+0042:  BTFSS  FD8.2
+0044:  GOTO   0080
+....................             // Cambia la dirección del giro de ambos motores 
+....................             direccion_1 = -direccion_1;  // Cambia la dirección del giro del motor 1 
+0048:  NEGF   07
+....................             direccion_2 = -direccion_2;  // Cambia la dirección del giro del motor 2 
+004A:  NEGF   08
+....................  
+....................             // Determina la dirección del giro del motor 1 
+....................             if (direccion_1 == 1) { 
+004C:  DECFSZ 07,W
+004E:  GOTO   005E
+....................                 output_high(MOTOR_PIN_A_1); 
+0052:  BCF    F93.0
+0054:  BSF    F8A.0
+....................                 output_low(MOTOR_PIN_B_1); 
+0056:  BCF    F93.1
+0058:  BCF    F8A.1
+....................             } else { 
+005A:  GOTO   0066
+....................                 output_low(MOTOR_PIN_A_1); 
+005E:  BCF    F93.0
+0060:  BCF    F8A.0
+....................                 output_high(MOTOR_PIN_B_1); 
+0062:  BCF    F93.1
+0064:  BSF    F8A.1
+....................             } 
+....................  
+....................             // Determina la dirección del giro del motor 2 
+....................             if (direccion_2 == 1) { 
+0066:  DECFSZ 08,W
+0068:  GOTO   0078
+....................                 output_high(MOTOR_PIN_A_2); 
+006C:  BCF    F93.2
+006E:  BSF    F8A.2
+....................                 output_low(MOTOR_PIN_B_2); 
+0070:  BCF    F93.3
+0072:  BCF    F8A.3
+....................             } else { 
+0074:  GOTO   0080
+....................                 output_low(MOTOR_PIN_A_2); 
+0078:  BCF    F93.2
+007A:  BCF    F8A.2
+....................                 output_high(MOTOR_PIN_B_2); 
+007C:  BCF    F93.3
+007E:  BSF    F8A.3
+....................             } 
+....................         } 
+....................  
+....................         // Actualiza el estado anterior del botón 
+....................         boton_estado_anterior = boton_estado_actual; 
+0080:  MOVFF  06,05
+0084:  GOTO   0030
+....................    } 
+.................... } 
+....................  
+*
+0088:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C000   PLL1 CPUDIV1 NOUSBDIV XT FCMEN IESO
+   Word  2: 1E38   PUT NOBROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E000   WRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

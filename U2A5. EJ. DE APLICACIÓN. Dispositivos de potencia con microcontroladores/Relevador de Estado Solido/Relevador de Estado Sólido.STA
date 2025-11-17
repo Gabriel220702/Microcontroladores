@@ -1,0 +1,45 @@
+
+ROM used:   158/32768 (0%)
+            158/32768 (0%) including unused fragments
+
+            0.2 Average locations per line
+            8.8 Average locations per statement
+
+RAM used:   6/2048 (0%) at main() level
+            7/2048 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   39    18 100  Relevador de Estado Sólido.c
+  852     0   0  C:\Program Files (x86)\PICC\Devices\18f4550.h
+----- -----
+  891    18 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     44  14    1             @delay_ms1
+0    110  35    2    357  3.3  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              18
+    Comments                168
+    Volume (V)              362
+    Difficulty (D)          3.1
+    Effort to implement (E) 1113
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    140
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE   154  32610  
+
+
+

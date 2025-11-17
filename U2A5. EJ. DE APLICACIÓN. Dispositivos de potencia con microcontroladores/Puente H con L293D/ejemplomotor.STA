@@ -1,0 +1,44 @@
+
+ROM used:   138/32768 (0%)
+            138/32768 (0%) including unused fragments
+
+            0.2 Average locations per line
+            5.1 Average locations per statement
+
+RAM used:   8/2048 (0%) at main() level
+            8/2048 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   57    27 100  ejemplomotor.c
+  852     0   0  C:\Program Files (x86)\PICC\Devices\18f4550.h
+----- -----
+  909    27 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0    134  49    4    682  5.6  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              27
+    Comments                167
+    Volume (V)              685
+    Difficulty (D)          5.5
+    Effort to implement (E) 3766
+    Time to implement (T)   3 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   3
+    Maintainability (MI)    129
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE   134  32630  
+
+
+

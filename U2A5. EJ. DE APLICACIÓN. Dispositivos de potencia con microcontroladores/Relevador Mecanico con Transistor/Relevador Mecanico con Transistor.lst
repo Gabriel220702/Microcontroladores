@@ -1,0 +1,135 @@
+CCS PCH C Compiler, Version 5.076, 56587               11-mar.-24 22:41
+
+               Filename:   F:\ITSRLL\6to Semestre\Microcontroladores\U2A5. EJ. DE APLICACIÓN. Dispositivos de potencia con microcontroladores\Relevador Mecanico con Transistor\Relevador Mecanico con Transistor.lst
+
+               ROM used:   130 bytes (0%)
+                           Largest free fragment is 32638
+               RAM used:   5 (0%) at main() level
+                           6 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0030
+.................... #include <18f4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #fuses XT,NOPROTECT,NOWDT,NOBROWNOUT,PUT,NOLVP 
+.................... #use delay(internal=4MHz) 
+0004:  CLRF   FEA
+0006:  MOVLW  06
+0008:  MOVWF  FE9
+000A:  MOVF   FEF,W
+000C:  BTFSC  FD8.2
+000E:  GOTO   002E
+0012:  MOVLW  01
+0014:  MOVWF  01
+0016:  CLRF   00
+0018:  DECFSZ 00,F
+001A:  BRA    0018
+001C:  DECFSZ 01,F
+001E:  BRA    0016
+0020:  MOVLW  4A
+0022:  MOVWF  00
+0024:  DECFSZ 00,F
+0026:  BRA    0024
+0028:  BRA    002A
+002A:  DECFSZ FEF,F
+002C:  BRA    0012
+002E:  RETURN 0
+....................  
+.................... // Definiciones de pines 
+.................... #define Rele PIN_A0 
+.................... #define Boton PIN_B0 
+....................  
+.................... void main() { 
+0030:  CLRF   FF8
+0032:  BCF    FD0.7
+0034:  MOVLW  60
+0036:  MOVWF  FD3
+0038:  MOVF   FD3,W
+003A:  MOVF   FC1,W
+003C:  ANDLW  C0
+003E:  IORLW  0F
+0040:  MOVWF  FC1
+0042:  MOVLW  07
+0044:  MOVWF  FB4
+0046:  BCF    05.0
+....................    boolean start = 0; 
+....................  
+....................    set_tris_a(0b11111110);  // Configura RA0 como salida (para el relé) 
+0048:  MOVLW  FE
+004A:  MOVWF  F92
+....................    set_tris_b(0b00000001);  // Configura RB0 como entrada (para el botón) 
+004C:  MOVLW  01
+004E:  MOVWF  F93
+....................    output_low(Rele);        // Inicialmente, apaga el relé 
+0050:  BCF    F92.0
+0052:  BCF    F89.0
+....................  
+....................    while(TRUE) { 
+....................       // Pregunta por el botón 
+....................       if(input(Boton)) { 
+0054:  BSF    F93.0
+0056:  BTFSS  F81.0
+0058:  BRA    0070
+....................          delay_ms(200);  // Anti-Debounce 
+005A:  MOVLW  C8
+005C:  MOVWF  06
+005E:  RCALL  0004
+....................           
+....................          // Instrucción para contabilizar una pulsación del botón 
+....................          while(input(Boton)) { 
+0060:  BSF    F93.0
+0062:  BTFSS  F81.0
+0064:  BRA    006E
+....................             delay_ms(200);  // Anti-Debounce 
+0066:  MOVLW  C8
+0068:  MOVWF  06
+006A:  RCALL  0004
+006C:  BRA    0060
+....................          } 
+....................           
+....................          start = !start;  // Cambia el estado lógico de start 
+006E:  BTG    05.0
+....................       } 
+....................        
+....................       // Activa o desactiva el relé 
+....................       if(start) { 
+0070:  BTFSS  05.0
+0072:  BRA    007A
+....................          output_high(Rele);  // Activa el relé (RA0) 
+0074:  BCF    F92.0
+0076:  BSF    F89.0
+....................       } else { 
+0078:  BRA    007E
+....................          output_low(Rele);   // Desactiva el relé (RA0) 
+007A:  BCF    F92.0
+007C:  BCF    F89.0
+....................       } 
+007E:  BRA    0054
+....................    } 
+.................... } 
+....................  
+0080:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C827   PLL12 CPUDIV1 USBDIV INTRC_IO FCMEN IESO
+   Word  2: 1E38   PUT NOBROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
