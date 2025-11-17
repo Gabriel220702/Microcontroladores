@@ -1,0 +1,63 @@
+#include <16F877a.h>
+#device adc=10
+#use delay(clock=4000000)
+#fuses XT, NOWDT, NOPROTECT, NOBROWNOUT, PUT, NOLVP
+
+#byte PORTB = 0xF81
+#byte TRISB = 0xF93
+
+#define LCD_ENABLE_PIN  PIN_D0
+#define LCD_RS_PIN      PIN_D1
+#define LCD_RW_PIN      PIN_D2
+#define LCD_DATA4       PIN_D4
+#define LCD_DATA5       PIN_D5
+#define LCD_DATA6       PIN_D6
+#define LCD_DATA7       PIN_D7
+
+#include <lcd.c>
+
+void init_keypad(){
+    TRISB = 0x1F; // Configura RB1-RB3 como salidas (columnas) y RB4-RB7 como entradas (filas)
+    PORTB = 0xFF; // Inicializa el puerto B con valores altos para desactivar pull-downs internos
+}
+
+char read_keypad(){
+    char key = 'n'; // 'n' significa que no se ha detectado ninguna tecla
+    char col, row;
+    for(col = 1; col <= 3; col++){
+        PORTB = ~(0x01 << (col + 1)); // Coloca un 0 en la columna actual, asumiendo RB1=2^2, RB2=2^3, RB3=2^4
+        delay_us(10); // Retardo para estabilización
+        row = (PORTB >> 4) & 0x0F; // Lee el estado de las filas
+        if(row != 0x0F){ // Si alguna fila es baja, una tecla ha sido presionada
+            while((PORTB >> 4) & 0x0F != 0x0F); // Espera a que se suelte la tecla (debouncing)
+            // Identifica la tecla específica
+            if(row == 0xE) key = 'A';
+            if(row == 0xD) key = 'B';
+            if(row == 0xB) key = 'C';
+            if(row == 0x7) key = 'D';
+            
+            // Concatena la fila con la columna
+            key = key * 10 + (col + '0'); // Convierte la columna a ASCII y concatena
+            break; // Sale del bucle una vez identificada la tecla
+        }
+    }
+    PORTB = 0xFF; // Restaura PORTB a alto
+    return key; // Devuelve el carácter correspondiente a la tecla presionada
+}
+
+void main() {
+   char pressed_key = 'n'; // Inicializa con 'n' para indicar que ninguna tecla ha sido presionada
+   
+   lcd_init();
+   init_keypad();
+   
+   while (true) {
+      pressed_key = read_keypad(); // Lee el teclado matricial
+      if(pressed_key != 'n'){ // Si se detectó una tecla
+         lcd_putc("\f"); // Limpia la pantalla
+         printf(lcd_putc, "Tecla: %c", pressed_key); // Muestra la tecla presionada
+         delay_ms(500); // Retraso para evitar rebotes y lecturas múltiples
+      }
+   }
+}
+

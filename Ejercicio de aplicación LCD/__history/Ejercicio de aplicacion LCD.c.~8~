@@ -1,0 +1,61 @@
+#include <16F887.h>
+#device adc=10
+#use delay(clock=4000000)
+#fuses XT, NOWDT, NOPROTECT, NOBROWNOUT, PUT, NOLVP
+
+#byte PORTD = 0xF83
+#byte TRISD = 0xF95
+
+#define LCD_ENABLE_PIN  PIN_D0
+#define LCD_RS_PIN      PIN_D1
+#define LCD_RW_PIN      PIN_D2
+#define LCD_DATA4       PIN_D4
+#define LCD_DATA5       PIN_D5
+#define LCD_DATA6       PIN_D6
+#define LCD_DATA7       PIN_D7
+
+#include <lcd.c>
+
+void main() {
+   int x = 41;
+   int y = 0xFA;
+
+   lcd_init();
+   lcd_putc("x=41 y=0xFA");
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   lcd_putc("Decimal:");
+   lcd_gotoxy(1, 2);
+   printf(lcd_putc, "x=%u y=%u", x, y);
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   lcd_putc("Hexadecimal:");
+   lcd_gotoxy(1, 2);
+   printf(lcd_putc, "x=0x%X y=0x%X", x, y);
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   lcd_putc("Binario:");
+   lcd_gotoxy(1, 2);
+   printf(lcd_putc, "x=%010u y=%010u", x, y);
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   lcd_putc("Octal:");
+   lcd_gotoxy(1, 2);
+   printf(lcd_putc, "x=%o y=%o", x, y); // Agregar aquí la representación en octal
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   lcd_putc("ASCII:");
+   lcd_gotoxy(1, 2);
+   printf(lcd_putc, "x=%c y=%c", x, y);
+   delay_ms(2000);
+   lcd_putc("\f");
+
+   while (true) {
+      // Loop infinito
+     }
+}

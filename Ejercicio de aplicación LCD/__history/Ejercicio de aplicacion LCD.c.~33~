@@ -1,0 +1,53 @@
+#include <lcd.c>
+
+void main()
+{
+    int x = 41;
+    int y = 0xfa;
+
+    lcd_init(); // Inicializa la pantalla LCD
+
+    // Muestra el valor de x en formato decimal
+    lcd_putc("x(decimal): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%u", x);
+
+    delay_ms(2000); // Espera 2 segundos
+
+    // Muestra el valor de x en formato hexadecimal
+    lcd_putc("x(hex): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%X", x);
+
+    delay_ms(2000); // Espera 2 segundos
+
+    // Muestra el valor de y en formato decimal
+    lcd_putc("y(decimal): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%u", y);
+
+    delay_ms(2000); // Espera 2 segundos
+
+    // Muestra el valor de y en formato hexadecimal
+    lcd_putc("y(hex): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%X", y);
+
+    delay_ms(2000); // Espera 2 segundos
+
+    // Muestra el valor de x y y en formato ASCII
+    lcd_putc("x(ASCII): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%c", x);
+
+    delay_ms(2000); // Espera 2 segundos
+
+    lcd_putc("y(ASCII): ");
+    lcd_putc("\f");
+    printf(lcd_putc, "%c", y);
+
+    while(1)
+    {
+        // Bucle infinito
+}
+}

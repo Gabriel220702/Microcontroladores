@@ -1,0 +1,58 @@
+[PROJECT]
+Target=Ejercicio de aplicacion LCD.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Ejercicio de aplicacion LCD.c
+[Ejercicio de aplicacion LCD.c]
+Type=4
+[mru-list]
+1=Ejercicio de aplicacion LCD.c
+
+[defines]
+buildcount=26
+
+[ProjectLog]
+Days=4
+D1=05-03-2024
+D1_L=10
+D1_L1=[42152]Stopped Editing.
+D1_L2=[42418]Started Editing.
+D1_L3=[44115]Stopped Editing.
+D1_L4=[44329]Started Editing.
+D1_L5=[46031]Stopped Editing.
+TotalEdit=54
+TotalDebug=0
+D1_E=54
+D1_D=0
+D1_L6=[46638]Project Closed.
+D1_L7=[67546]Project Opened.
+D1_L8=[67665]Started Editing.
+D1_L9=[67870]Stopped Editing.
+D1_L10=[67870]Project Closed.
+D2=06-03-2024
+D2_L=2
+D2_L1=[29667]Project Opened.
+D2_L2=[30743]Project Closed.
+D3=10-03-2024
+D3_L=2
+D3_L1=[3463]Project Opened.
+D3_L2=[4589]Project Closed.
+D4=11-03-2024
+D4_L=4
+D4_L1=[72040]Project Opened.
+D4_L2=[72309]Project Closed.
+D4_L3=[72323]Project Opened.
+D4_L4=[72333]Project Closed.
+
+[Opened Files]
+1=Ejercicio de aplicacion LCD.c
+t1=1
+Count=1
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=Ejercicio de aplicacion LCD (main)

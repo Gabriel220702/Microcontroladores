@@ -1,0 +1,5 @@
+Compiling F:\Matriz con botones\Matriz con botones on 11-mar.-24 at 21:29
+>>> Warning 203 "Matriz con botones.c" Line 18(1,1): Condition always TRUE
+      Memory usage:   ROM=8%      RAM=4% - 8%
+      0 Errors,  1 Warnings.
+Build Successful.

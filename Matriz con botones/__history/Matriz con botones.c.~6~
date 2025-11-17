@@ -1,0 +1,32 @@
+#include <16f877a.h>
+#fuses XT, NOWDT, PUT, NOPROYECT, BROWNOUT, NOCPD, NOWRT, NODBUG
+#use delay (clock=4Mhz)
+#define use_portd_lcd true
+#define use_portb_kbd true
+#include <lcd.c>
+#include <kbd.c>
+#include <stdio.h>
+
+void main(){
+char k;
+lcd_init();
+kbd_init();
+port_b_pullups(true);
+
+lcd_putc("\f Leyendo Teclado\n");
+
+while(1){
+k=kbd_getc();
+
+if(k!=0){
+if(k=='*')
+   lcd_putc("\f ");
+   else
+      printf(lcd_putc,"\f Tecla No= %c ", k);
+      delay_ms(500);
+      lcd_putc("\f Leyendo Teclado\n");
+      }  
+   }
+}
+
+

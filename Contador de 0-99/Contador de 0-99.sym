@@ -1,0 +1,69 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+021-02A main.display
+02B     main.entrada
+02C     main.num1
+02D     main.num2
+02E     main.i
+02F     @delay_ms1.P1
+02F     @DIV88.P2
+02F     main.@SCRATCH1
+030     @DIV88.P1
+031     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @DIV88
+000019  @delay_ms1
+000030  main
+000030  @cinit1
+000038  @cinit2
+
+Project Directory:
+    F:\Contador de 0-9\
+
+Project Files:
+    Contador de 0-99.c                                      [06-mar.-24 08:51  CRC=537D877E]
+    C:\Program Files (x86)\PICC\Devices\16F877.h            [15-ene.-18 15:53  CRC=EE78BE53]
+
+Source signature=306F0424
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=8DE2
+
+Units:
+    Contador de 0-99 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Contador de 0-99.xsym
+    Errors:      Contador de 0-99.err
+    Ext Symbols: Contador de 0-99.esym
+    INHX8:       Contador de 0-99.hex
+    Symbols:     Contador de 0-99.sym
+    List:        Contador de 0-99.lst
+    Debug/COFF:  Contador de 0-99.cof
+    Project:     Contador de 0-99.ccspjt
+    Call Tree:   Contador de 0-99.tre
+    Statistics:  Contador de 0-99.STA

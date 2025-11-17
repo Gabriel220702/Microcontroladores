@@ -1,0 +1,6 @@
+ÀÄContador de 0-99
+   ÀÄmain  0/91  Ram=15
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@DIV88  0/21  Ram=3
+      ÃÄ@DIV88  0/21  Ram=3
+      ÀÄ@delay_ms1  0/23  Ram=1

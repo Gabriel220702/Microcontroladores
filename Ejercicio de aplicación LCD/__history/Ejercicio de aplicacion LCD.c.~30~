@@ -1,0 +1,24 @@
+#include <16F877A.h>
+#device ADC=10
+#use delay(crystal=4000000)
+#include <lcd.c>
+
+void main() {
+   int x = 41;
+   int y = 0xFA;
+   
+   lcd_init();
+   
+   lcd_putc("x=");
+   lcd_putc(x/10 + '0');
+   lcd_putc(x%10 + '0');
+   
+   lcd_gotoxy(1, 0);
+   lcd_putc("Y=");
+   lcd_putc((y >> 4) < 10 ? (y >> 4) + '0' : (y >> 4) + 'A' - 10);
+   lcd_putc((y & 0x0F) < 10 ? (y & 0x0F) + '0' : (y & 0x0F) + 'A' - 10);
+   
+   while (1) {
+      // Programa principal aquí
+   }
+}

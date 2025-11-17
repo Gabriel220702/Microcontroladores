@@ -1,0 +1,67 @@
+#include <16F877a.h>
+#device adc=10
+#use delay(clock=4000000)
+#fuses XT, NOWDT, NOPROTECT, NOBROWNOUT, PUT, NOLVP
+
+#byte PORTB = 0xF81
+#byte TRISB = 0xF93
+
+#define LCD_ENABLE_PIN  PIN_D0
+#define LCD_RS_PIN      PIN_D1
+#define LCD_RW_PIN      PIN_D2
+#define LCD_DATA4       PIN_D4
+#define LCD_DATA5       PIN_D5
+#define LCD_DATA6       PIN_D6
+#define LCD_DATA7       PIN_D7
+
+#include <lcd.c>
+
+void init_keypad(){
+    // Configura RB1-RB3 como salidas y RB4-RB7 como entradas
+    TRISB |= 0xF0; // Configura los pines RB4 a RB7 como entradas
+    TRISB &= 0xF9; // Configura los pines RB1 a RB3 como salidas
+}
+
+char scan_keypad(){
+    const char keys[4][3] = {
+        {'1', '2', '3'},
+        {'4', '5', '6'},
+        {'7', '8', '9'},
+        {'*', '0', '#'}
+    };
+    // Aseguramos que todas las columnas comiencen en alto
+    PORTB |= 0x0E; // Pone RB1-RB3 en alto
+
+    for(int col = 0; col < 3; col++){
+        // Pone una columna en bajo y las demás en alto
+        PORTB = ~(0x02 << col) & 0x0E; // Desplaza el 0 a la posición correcta para la columna actual
+
+        for(int row = 0; row < 4; row++){
+            // Verifica si alguna fila está en bajo
+            if(!(PORTB & (0x10 << row))){
+                while(!(PORTB & (0x10 << row))); // Espera a que la tecla se suelte (debounce)
+                delay_ms(20); // Retardo adicional para el debounce
+                return keys[row][col];
+            }
+        }
+    }
+    return '\0'; // Ninguna tecla presionada
+}
+
+void main() {
+    char key_pressed;
+
+    lcd_init();
+    init_keypad();
+
+    while(TRUE){
+        key_pressed = scan_keypad(); // Escanea el teclado en busca de teclas presionadas
+        if(key_pressed != '\0'){ // Si se presionó una tecla
+            lcd_putc('\f'); // Limpia la pantalla del LCD
+            lcd_putc("Tecla: ");
+            lcd_putc(key_pressed); // Muestra la tecla presionada
+            delay_ms(1000); // Espera un segundo antes de la siguiente lectura
+        }
+    }
+}
+

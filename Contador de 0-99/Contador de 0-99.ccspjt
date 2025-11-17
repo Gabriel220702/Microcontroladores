@@ -1,0 +1,42 @@
+[PROJECT]
+Target=Contador de 0-99.hex
+Processor_Text=PIC16F877
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Contador de 0-99.c
+[Contador de 0-99.c]
+Type=4
+[mru-list]
+1=Contador de 0-99.c
+
+[defines]
+buildcount=4
+
+[Opened Files]
+1=Contador de 0-99.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=Contador de 0-99 (main)
+
+[ProjectLog]
+Days=2
+D1=06-03-2024
+D1_L=4
+D1_L1=[32042]Stopped Editing.
+TotalEdit=6
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L2=[32043]Project Closed.
+D1_L3=[32297]Project Opened.
+D1_L4=[32692]Project Closed.
+D2=10-03-2024
+D2_L=2
+D2_L1=[4691]Project Opened.
+D2_L2=[5856]Project Closed.
+
+[fileformats]
+forcecoff=0

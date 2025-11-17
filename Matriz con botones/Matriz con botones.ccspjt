@@ -1,0 +1,37 @@
+[PROJECT]
+Target=Matriz con botones.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Matriz con botones.c
+[Matriz con botones.c]
+Type=4
+[mru-list]
+1=Matriz con botones.c
+
+[defines]
+buildcount=8
+
+[ProjectLog]
+Days=1
+D1=11-03-2024
+D1_L=6
+D1_L1=[72678]Stopped Editing.
+D1_L2=[73118]Started Editing.
+D1_L3=[75057]Stopped Editing.
+D1_L4=[77074]Started Editing.
+D1_L5=[77686]Stopped Editing.
+TotalEdit=33
+TotalDebug=0
+D1_E=33
+D1_D=0
+D1_L6=[79593]Project Closed.
+
+[Opened Files]
+1=Matriz con botones.c
+t1=10
+Count=1
+[Units]
+Count=1
+1=Matriz con botones (main)

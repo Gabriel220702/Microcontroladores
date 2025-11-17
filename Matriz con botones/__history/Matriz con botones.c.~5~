@@ -1,0 +1,57 @@
+#include <16F877a.h>
+#device adc=10
+#use delay(clock=4000000)
+#fuses XT, NOWDT, NOPROTECT, NOBROWNOUT, PUT, NOLVP
+
+#byte PORTB = 0xF81
+#byte TRISB = 0xF93
+
+#define LCD_ENABLE_PIN  PIN_D0
+#define LCD_RS_PIN      PIN_D1
+#define LCD_RW_PIN      PIN_D2
+#define LCD_DATA4       PIN_D4
+#define LCD_DATA5       PIN_D5
+#define LCD_DATA6       PIN_D6
+#define LCD_DATA7       PIN_D7
+
+#include <lcd.c>
+
+void init_keypad(){
+    TRISB = 0x0F; // RB0-RB3 como salidas para las columnas, RB4-RB7 como entradas para las filas
+    PORTB = 0xFF; // Inicialmente, establece todos los pines de PORTB a alto
+}
+
+char read_keypad(){
+    const char keys[4][3] = {{'1','2','3'},
+                             {'4','5','6'},
+                             {'7','8','9'},
+                             {'*','0','#'}};
+    char row, col;
+    for(row = 0; row < 4; row++){
+        PORTB = ~(0x10 << row); // Pone a bajo uno de los pines de fila (RB4-RB7) a la vez
+        for(col = 0; col < 3; col++){
+            if(!(PORTB & (0x08 >> col))){ // Chequea si alguna columna (RB1-RB3) está en bajo
+                while(!(PORTB & (0x08 >> col))); // Espera hasta que se suelte la tecla
+                return keys[row][col]; // Retorna el carácter correspondiente a la tecla presionada
+            }
+        }
+    }
+    return 'n'; // Retorna 'n' si no se presionó ninguna tecla
+}
+
+void main() {
+    char pressed_key = 'n'; // 'n' indica ninguna tecla presionada
+   
+    lcd_init();
+    init_keypad();
+   
+    while (true) {
+        pressed_key = read_keypad(); // Lee el teclado matricial
+        if(pressed_key != 'n'){ // Si se detectó una tecla
+            lcd_putc("\f"); // Limpia la pantalla
+            printf(lcd_putc, "Tecla: %c", pressed_key); // Muestra la tecla presionada
+            delay_ms(500); // Retraso para evitar rebotes y lecturas múltiples
+        }
+    }
+}
+
