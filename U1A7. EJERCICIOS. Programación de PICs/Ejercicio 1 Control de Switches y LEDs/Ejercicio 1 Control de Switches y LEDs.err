@@ -1,0 +1,5 @@
+Compiling E:\U1A7. EJERCICIOS. Programación de PICs\Ejercicio 1 Control de Switches y LEDs\Ejercicio 1 Control de Switches y LEDs on 18-feb.-24 at 16:15
+>>> Warning 203 "Ejercicio 1 Control de Switches y LEDs.c" Line 20(1,1): Condition always TRUE
+      Memory usage:   ROM=1%      RAM=2% - 2%
+      0 Errors,  1 Warnings.
+Build Successful.

@@ -1,0 +1,44 @@
+[defines]
+buildcount=3
+
+[Opened Files]
+1=Ejercicio 2 Conversión a Display de 7 Segmentos.c
+t1=1
+Count=1
+[PROJECT]
+Target=Ejercicio 2 Conversión a Display de 7 Segmentos.hex
+Processor_Text=PIC16F877
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Ejercicio 2 Conversión a Display de 7 Segmentos.c
+[Ejercicio 2 Conversión a Display de 7 Segmentos.c]
+Type=4
+[mru-list]
+1=Ejercicio 2 Conversión a Display de 7 Segmentos.c
+
+[ProjectLog]
+Days=2
+D1=24-02-2024
+D1_L=5
+D1_L1=[56015]Stopped Editing.
+D1_L2=[56141]Started Editing.
+D1_L3=[56442]Stopped Editing.
+TotalEdit=2
+TotalDebug=0
+D1_E=2
+D1_D=0
+D1_L4=[58895]Project Closed.
+D1_L5=[70655]Project Opened.
+D2=06-03-2024
+D2_L=4
+D2_L1=[31290]Project Opened.
+D2_L2=[31494]Project Closed.
+D2_L3=[31529]Project Opened.
+D2_L4=[31567]Project Closed.
+[Units]
+Count=1
+1=Ejercicio 2 Conversión a Display de 7 Segmentos (main)
+
+[fileformats]
+forcecoff=0

@@ -1,0 +1,20 @@
+#include <16F877A.h>
+#fuses NOWDT                    //No Watch Dog Timer
+#fuses HS                       //High speed Oscillator (> 4mhz for PCM/PCH) (>10mhz for PCD)
+#fuses PUT                      //Power Up Timer
+#fuses PROTECT                  //Code protected from reads
+#fuses BROWNOUT                 //Reset when brownout detected
+#fuses LVP                      //Low Voltage Programming
+#fuses CPD                      //Data EEPROM Code Protection
+#fuses WRT                      //Program Memory Write Protected
+#use delay(clock=20000000)      //Using 20MHz Crystal
+
+void main() {
+    set_tris_b(0x0F);  // Set RB0 to RB3 as input
+    set_tris_d(0x00);  // Set PORTD as output
+    
+    while(TRUE) {
+        output_d(input_b() & 0x0F);  // Read switches and output to LEDs
+    }
+}
+

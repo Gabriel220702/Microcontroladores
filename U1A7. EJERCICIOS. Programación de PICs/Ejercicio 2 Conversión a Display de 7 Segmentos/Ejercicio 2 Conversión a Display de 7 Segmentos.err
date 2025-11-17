@@ -1,0 +1,5 @@
+Compiling E:\U1A7. EJERCICIOS. Programación de PICs\Ejercicio 2 Conversión a Display de 7 Segmentos\Ejercicio 2 Conversión a Display de 7 Segmentos on 24-feb.-24 at 15:35
+>>> Warning 214 "Ejercicio 2 Conversión a Display de 7 Segmentos.c" Line 27(1,1): Operator precedance rules may not be as intended, use () to clarify
+      Memory usage:   ROM=2%      RAM=5% - 6%
+      0 Errors,  1 Warnings.
+Build Successful.

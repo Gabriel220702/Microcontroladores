@@ -1,0 +1,53 @@
+#include <16F877A.h>
+#fuses XT, NOWDT, NOPROTECT, NOBROWNOUT, NOLVP
+#use delay(clock=4000000)
+
+// Definición de pines para switches y LEDs
+#define SW1 input(PIN_B0)
+#define SW2 input(PIN_B1)
+#define SW3 input(PIN_B2)
+#define SW4 input(PIN_B3)
+
+#define LED1 output_low(PIN_D0)
+#define LED2 output_low(PIN_D1)
+#define LED3 output_low(PIN_D2)
+#define LED4 output_low(PIN_D3)
+
+void main() {
+   // Configuración de puertos
+   set_tris_b(0x0F); // RB0-RB3 como entradas (switches) con resistencias pull-down
+   set_tris_d(0x00); // RD0-RD3 como salidas (LEDs)
+
+   // Inicialización
+   LED1;
+   LED2;
+   LED3;
+   LED4;
+
+   while (1) {
+      if (!SW1) {
+         LED1=1;  // Encender LED1 al presionar SW1
+      } else {
+         LED1=0;  // Apagar LED1 al soltar SW1
+      }
+
+      if (!SW2) {
+         LED2=1;  // Encender LED2 al presionar SW2
+      } else {
+         LED2=0;  // Apagar LED2 al soltar SW2
+      }
+
+      if (!SW3) {
+         LED3=1;  // Encender LED3 al presionar SW3
+      } else {
+         LED3=0;  // Apagar LED3 al soltar SW3
+      }
+
+      if (!SW4) {
+         LED4=1;  // Encender LED4 al presionar SW4
+      } else {
+         LED4=0;  // Apagar LED4 al soltar SW4
+      }
+   }
+}
+

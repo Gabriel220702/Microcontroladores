@@ -1,0 +1,56 @@
+[PROJECT]
+Target=Ejercicio 1 Control de Switches y LEDs.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Ejercicio 1 Control de Switches y LEDs.c
+[Ejercicio 1 Control de Switches y LEDs.c]
+Type=4
+[mru-list]
+1=Ejercicio 1 Control de Switches y LEDs.c
+
+[defines]
+buildcount=4
+
+[ProjectLog]
+Days=3
+D1=18-02-2024
+D1_L=12
+D1_L1=[51205]Stopped Editing.
+D1_L2=[51896]Started Editing.
+D1_L3=[52453]Stopped Editing.
+D1_L4=[55127]Started Editing.
+D1_L5=[55428]Stopped Editing.
+TotalEdit=8
+TotalDebug=0
+D1_E=8
+D1_D=0
+D1_L6=[57869]Project Closed.
+D1_L7=[58334]Project Opened.
+D1_L8=[58550]Started Editing.
+D1_L9=[58851]Stopped Editing.
+D1_L10=[59924]Project Closed.
+D1_L11=[59939]Project Opened.
+D1_L12=[60113]Project Closed.
+D2=19-02-2024
+D2_L=2
+D2_L1=[36683]Project Opened.
+D2_L2=[37554]Project Closed.
+D3=24-02-2024
+D3_L=4
+D3_L1=[59260]Project Opened.
+D3_L2=[62360]Project Closed.
+D3_L3=[80440]Project Opened.
+D3_L4=[81747]Project Closed.
+
+[Opened Files]
+1=Ejercicio 1 Control de Switches y LEDs.c
+t1=1
+Count=1
+
+[fileformats]
+forcecoff=0
+[Units]
+Count=1
+1=Ejercicio 1 Control de Switches y LEDs (main)

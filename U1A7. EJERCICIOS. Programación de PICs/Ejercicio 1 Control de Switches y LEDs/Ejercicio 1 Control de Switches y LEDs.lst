@@ -1,0 +1,123 @@
+CCS PCM C Compiler, Version 5.076, 56587               18-feb.-24 16:15
+
+               Filename:   E:\U1A7. EJERCICIOS. Programación de PICs\Ejercicio 1 Control de Switches y LEDs\Ejercicio 1 Control de Switches y LEDs.lst
+
+               ROM used:   47 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           6 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16f877a.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #fuses XT, NOWDT, NOPROTECT, NOLVP 
+.................... #use delay(clock = 4000000) 
+.................... #byte TRISB = 0x86 
+.................... #byte PORTB = 0x06 
+.................... #byte OPTION_REG = 0x81 
+....................  
+.................... void main() 
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  BSF    03.5
+0008:  BSF    1F.0
+0009:  BSF    1F.1
+000A:  BSF    1F.2
+000B:  BCF    1F.3
+000C:  MOVLW  07
+000D:  MOVWF  1C
+000E:  BCF    03.7
+.................... { 
+....................    bit_clear(OPTION_REG, 7);   // Desactiva el pull-up en RB0-RB3 
+000F:  BCF    01.7
+....................    bit_set(TRISB, 0);          // Configura RB0 como entrada 
+0010:  BSF    06.0
+....................    bit_set(TRISB, 1);          // Configura RB1 como entrada 
+0011:  BSF    06.1
+....................    bit_set(TRISB, 2);          // Configura RB2 como entrada 
+0012:  BSF    06.2
+....................    bit_set(TRISB, 3);          // Configura RB3 como entrada 
+0013:  BSF    06.3
+....................    bit_clear(TRISB, 4);        // Configura RB4 como salida 
+0014:  BCF    06.4
+....................    bit_clear(TRISB, 5);        // Configura RB5 como salida 
+0015:  BCF    06.5
+....................    bit_clear(TRISB, 6);        // Configura RB6 como salida 
+0016:  BCF    06.6
+....................    bit_clear(TRISB, 7);        // Configura RB7 como salida 
+0017:  BCF    06.7
+....................  
+....................    while (1) 
+....................    { 
+....................       // Control para el LED conectado a RB4 (botón conectado a RB0) 
+....................       if (bit_test(PORTB, 0) == 1) 
+0018:  BCF    03.5
+0019:  BTFSS  06.0
+001A:  GOTO   01D
+....................          bit_clear(PORTB, 4); 
+001B:  BCF    06.4
+001C:  GOTO   01E
+....................       else 
+....................          bit_set(PORTB, 4); 
+001D:  BSF    06.4
+....................  
+....................       // Control para el LED conectado a RB5 (botón conectado a RB1) 
+....................       if (bit_test(PORTB, 1) == 1) 
+001E:  BTFSS  06.1
+001F:  GOTO   022
+....................          bit_clear(PORTB, 5); 
+0020:  BCF    06.5
+0021:  GOTO   023
+....................       else 
+....................          bit_set(PORTB, 5); 
+0022:  BSF    06.5
+....................  
+....................       // Control para el LED conectado a RB6 (botón conectado a RB2) 
+....................       if (bit_test(PORTB, 2) == 1) 
+0023:  BTFSS  06.2
+0024:  GOTO   027
+....................          bit_clear(PORTB, 6); 
+0025:  BCF    06.6
+0026:  GOTO   028
+....................       else 
+....................          bit_set(PORTB, 6); 
+0027:  BSF    06.6
+....................  
+....................       // Control para el LED conectado a RB7 (botón conectado a RB3) 
+....................       if (bit_test(PORTB, 3) == 1) 
+0028:  BTFSS  06.3
+0029:  GOTO   02C
+....................          bit_clear(PORTB, 7); 
+002A:  BCF    06.7
+002B:  GOTO   02D
+....................       else 
+....................          bit_set(PORTB, 7); 
+002C:  BSF    06.7
+002D:  GOTO   019
+....................    } 
+.................... } 
+....................  
+002E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

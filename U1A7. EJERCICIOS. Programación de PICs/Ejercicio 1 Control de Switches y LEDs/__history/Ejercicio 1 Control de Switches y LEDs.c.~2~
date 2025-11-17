@@ -1,0 +1,50 @@
+#include <xc.h>
+
+// Definición de pines para switches y LEDs
+#define SW1 PORTBbits.RB0
+#define SW2 PORTBbits.RB1
+#define SW3 PORTBbits.RB2
+#define SW4 PORTBbits.RB3
+
+#define LED1 PORTD0
+#define LED2 PORTD1
+#define LED3 PORTD2
+#define LED4 PORTD3
+
+void main(void) {
+    // Configuración de puertos
+    TRISB = 0x0F;   // RB0-RB3 como entradas (switches)
+    TRISD = 0x00;   // RD0-RD3 como salidas (LEDs)
+
+    // Inicialización
+    LATD = 0x00;    // Apagar todos los LEDs inicialmente
+
+    while (1) {
+        if (SW1 == 0) {
+            LATD |= (1 << LED1);  // Encender LED1 al presionar SW1
+        } else {
+            LATD &= ~(1 << LED1);  // Apagar LED1 al soltar SW1
+        }
+
+        if (SW2 == 0) {
+            LATD |= (1 << LED2);  // Encender LED2 al presionar SW2
+        } else {
+            LATD &= ~(1 << LED2);  // Apagar LED2 al soltar SW2
+        }
+
+        if (SW3 == 0) {
+            LATD |= (1 << LED3);  // Encender LED3 al presionar SW3
+        } else {
+            LATD &= ~(1 << LED3);  // Apagar LED3 al soltar SW3
+        }
+
+        if (SW4 == 0) {
+            LATD |= (1 << LED4);  // Encender LED4 al presionar SW4
+        } else {
+            LATD &= ~(1 << LED4);  // Apagar LED4 al soltar SW4
+        }
+    }
+
+    return;
+}
+

@@ -1,0 +1,68 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020-029 display
+02A     main.valor
+02B     main.decena
+02C     main.unidad
+02D     @DIV88.P1
+02D     @delay_ms1.P2
+02D     main.@SCRATCH1
+02E     @DIV88.P1
+02F     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @DIV88
+000019  @delay_ms1
+000030  main
+000030  @cinit1
+000038  @cinit2
+
+Project Directory:
+    E:\U1A7. EJERCICIOS. Programación de PICs\Ejercicio 2 Conversión a Display de 7 Segmentos\
+
+Project Files:
+    Ejercicio 2 Conversión a Display de 7 Segmentos.c       [24-feb.-24 15:35  CRC=13FBCAAF]
+    C:\Program Files (x86)\PICC\Devices\16F877.h            [15-ene.-18 15:53  CRC=EE78BE53]
+
+Source signature=F0ED4755
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=EDF6
+
+Units:
+    Ejercicio 2 Conversión a Display de 7 Segmentos (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Ejercicio 2 Conversión a Display de 7 Segmentos.xsym
+    Errors:      Ejercicio 2 Conversión a Display de 7 Segmentos.err
+    Ext Symbols: Ejercicio 2 Conversión a Display de 7 Segmentos.esym
+    INHX8:       Ejercicio 2 Conversión a Display de 7 Segmentos.hex
+    Symbols:     Ejercicio 2 Conversión a Display de 7 Segmentos.sym
+    List:        Ejercicio 2 Conversión a Display de 7 Segmentos.lst
+    Debug/COFF:  Ejercicio 2 Conversión a Display de 7 Segmentos.cof
+    Project:     Ejercicio 2 Conversión a Display de 7 Segmentos.ccspjt
+    Call Tree:   Ejercicio 2 Conversión a Display de 7 Segmentos.tre
+    Statistics:  Ejercicio 2 Conversión a Display de 7 Segmentos.STA
