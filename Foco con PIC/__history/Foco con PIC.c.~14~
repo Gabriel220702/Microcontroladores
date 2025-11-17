@@ -1,0 +1,16 @@
+#include <18f4550.h>
+#fuses XT, NOWDT, NOPROTECT, NOLVP
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4000000)
+
+#define SSR_LED_PIN PIN_B0
+
+void main() {
+    set_tris_b(0x00); // Configura todos los pines del puerto B como salidas
+
+    while(TRUE) {
+        output_high(SSR_LED_PIN); // Enciende el LED y activa el SSR constantemente
+        // Se elimina el ciclo de apagado y los retrasos, por lo que el pulso es constante.
+    }
+}

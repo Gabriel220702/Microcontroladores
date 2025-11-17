@@ -1,0 +1,18 @@
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4MHz)
+
+#define SSR_LED_PIN PIN_B0
+
+void main() {
+    set_tris_b(0x00); // Configura todos los pines del puerto B como salidas
+    
+    while(TRUE) {
+        output_high(SSR_LED_PIN); // Enciende el LED y activa el SSR
+        delay_ms(1000);           // Espera 1 segundo
+        
+        output_low(SSR_LED_PIN);  // Apaga el LED y desactiva el SSR
+        delay_ms(1000);           // Espera 1 segundo
+    }
+}
+

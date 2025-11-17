@@ -1,0 +1,24 @@
+#include <18f4550.h>
+#fuses XT, NOWDT, NOPROTECT, NOLVP
+#use delay(clock = 4000000)
+#byte TRISB = 0x86
+#byte PORTB = 0x06
+#byte OPTION_REG = 0x81
+
+void main()
+{
+   bit_clear(OPTION_REG, 7);   // Desactiva el pull-up en RB0
+   bit_set(TRISB, 0);          // Configura RB0 como entrada
+   bit_clear(TRISB, 1);        // Configura RB1 como salida
+   bit_clear(PORTB, 1);        // Apaga el LED inicialmente
+
+   while (1)
+   {
+      if (bit_test(PORTB, 0) == 1)  // Verifica si RB0 está en nivel alto (botón no presionado)
+         bit_clear(PORTB, 1);       // Si RB0 está en nivel alto, apaga el LED (bit 1 de PORTB)
+      else
+         bit_set(PORTB, 1);         // Si RB0 está en nivel bajo (botón presionado), enciende el LED
+   }
+}
+
+

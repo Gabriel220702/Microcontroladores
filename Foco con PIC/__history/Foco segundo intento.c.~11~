@@ -1,0 +1,24 @@
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4000000)
+
+#define BOTON PIN_A0
+#define LED   PIN_A1
+
+void main() {
+    set_tris_a(0x01); // Configura RA0 como entrada
+
+    while(TRUE) {
+        if(input(BOTON) == 0) {
+            delay_ms(20); // Debouncing: espera un breve periodo para estabilizar la lectura del botón
+            if(input(BOTON) == 0) {
+                output_toggle(LED); // Invierte el estado del LED si el botón está presionado
+                while(input(BOTON) == 0); // Espera hasta que el botón sea liberado
+            }
+        }
+        else {
+            output_low(LED); // Apaga el LED si el botón no está presionado
+        }
+    }
+}
+

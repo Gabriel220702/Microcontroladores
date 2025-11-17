@@ -1,0 +1,16 @@
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4000000)
+
+#define BOTON PIN_B0
+#define LED   PIN_B1
+
+void main() {
+    set_tris_b(0x01); // Configura RB0 como entrada
+
+    while(TRUE) {
+        output_bit(LED, !input(BOTON)); // Invierte el estado del LED si el botón está presionado
+    }
+}
+
+

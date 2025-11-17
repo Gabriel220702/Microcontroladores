@@ -1,0 +1,158 @@
+CCS PCH C Compiler, Version 5.076, 56587               27-abr.-24 19:50
+
+               Filename:   D:\Interrupciones Internas\Interrupciones Internas.lst
+
+               ROM used:   262 bytes (1%)
+                           Largest free fragment is 32502
+               RAM used:   25 (1%) at main() level
+                           25 (1%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 31
+
+*
+0000:  GOTO   00CE
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  FF5,15
+003C:  MOVFF  FF6,16
+0040:  MOVFF  FF7,17
+0044:  MOVFF  00,0E
+0048:  MOVFF  01,0F
+004C:  MOVFF  02,10
+0050:  MOVFF  03,11
+0054:  BTFSS  F9D.0
+0056:  GOTO   0060
+005A:  BTFSC  F9E.0
+005C:  GOTO   00BA
+0060:  BTFSS  FA0.1
+0062:  GOTO   006C
+0066:  BTFSC  FA1.1
+0068:  GOTO   00C4
+006C:  MOVFF  0E,00
+0070:  MOVFF  0F,01
+0074:  MOVFF  10,02
+0078:  MOVFF  11,03
+007C:  MOVFF  0C,FE9
+0080:  MOVFF  07,FEA
+0084:  BSF    07.7
+0086:  MOVFF  08,FE1
+008A:  MOVFF  09,FE2
+008E:  MOVFF  0A,FD9
+0092:  MOVFF  0B,FDA
+0096:  MOVFF  12,FF3
+009A:  MOVFF  13,FF4
+009E:  MOVFF  14,FFA
+00A2:  MOVFF  15,FF5
+00A6:  MOVFF  16,FF6
+00AA:  MOVFF  17,FF7
+00AE:  MOVF   04,W
+00B0:  MOVFF  06,FE0
+00B4:  MOVFF  05,FD8
+00B8:  RETFIE 0
+.................... #include <18F4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #fuses NOWDT, PUT, BROWNOUT, NOLVP, NOCPD, NOPBADEN 
+.................... #use delay(clock=1000000) 
+....................  
+.................... void main() { 
+*
+00CE:  CLRF   FF8
+00D0:  BCF    FD0.7
+00D2:  BSF    07.7
+00D4:  MOVF   FC1,W
+00D6:  ANDLW  C0
+00D8:  IORLW  0F
+00DA:  MOVWF  FC1
+00DC:  MOVLW  07
+00DE:  MOVWF  FB4
+....................    setup_oscillator(OSC_1MHZ); // Configurar el oscilador a 1 MHz 
+00E0:  MOVLW  40
+00E2:  MOVWF  FD3
+00E4:  MOVF   FD3,W
+....................  
+....................    setup_timer_1(T1_INTERNAL | T1_DIV_BY_8); // Timer1 para uso interno con prescaler 1:8 
+00E6:  MOVLW  B5
+00E8:  MOVWF  FCD
+....................    set_timer1(3036);                          // Establecer valor inicial para desbordamiento en ~1 segundo 
+00EA:  MOVLW  0B
+00EC:  MOVWF  FCF
+00EE:  MOVLW  DC
+00F0:  MOVWF  FCE
+....................  
+....................    setup_timer_3(T3_INTERNAL | T3_DIV_BY_8); // Timer3 para uso interno con prescaler 1:8 
+00F2:  MOVLW  B5
+00F4:  MOVWF  FB1
+....................    set_timer3(3036);                          // Establecer valor inicial para desbordamiento en ~1 segundo 
+00F6:  MOVLW  0B
+00F8:  MOVWF  FB3
+00FA:  MOVLW  DC
+00FC:  MOVWF  FB2
+....................  
+....................    enable_interrupts(INT_TIMER1); // Habilitar interrupciones de Timer1 
+00FE:  BSF    F9D.0
+....................    enable_interrupts(INT_TIMER3); // Habilitar interrupciones de Timer3 
+0100:  BSF    FA0.1
+....................    enable_interrupts(GLOBAL);      // Habilitar todas las interrupciones 
+0102:  MOVLW  C0
+0104:  IORWF  FF2,F
+....................  
+....................    while(TRUE) { 
+0106:  BRA    0106
+....................        // El bucle principal se mantiene vacío; el trabajo se realiza en las ISR 
+....................    } 
+.................... } 
+....................  
+.................... #INT_TIMER1 
+.................... void TIMER1_isr() { 
+0108:  SLEEP 
+....................    output_toggle(PIN_A0); // Alternar el estado del LED conectado a RA0 
+*
+00BA:  BCF    F92.0
+00BC:  BTG    F89.0
+.................... } 
+....................  
+00BE:  BCF    F9E.0
+00C0:  GOTO   006C
+.................... #INT_TIMER3 
+.................... void TIMER3_isr() { 
+....................    output_toggle(PIN_A1); // Alternar el estado del LED conectado a RA1 
+00C4:  BCF    F92.1
+00C6:  BTG    F89.1
+00C8:  BCF    FA1.1
+00CA:  GOTO   006C
+.................... } 
+....................  
+
+Configuration Fuses:
+   Word  1: CF3F   PLL12 CPUDIV4 USBDIV FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8500   CCP2C1 NOPBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

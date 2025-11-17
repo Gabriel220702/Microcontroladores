@@ -1,0 +1,22 @@
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4000000)
+
+// Definiciones para facilitar la lectura del código
+#define BOTON PIN_B0 // Definir RB0 como el pin del botón
+#define LED PIN_B1   // Definir RB1 como el pin del LED
+
+void main() {
+    // Configuración de los pines
+    set_tris_b(0x01); // Configura RB0 como entrada (0b00000001) y el resto como salidas
+    
+    while (TRUE) {
+        if (input(BOTON) == 0) { // Verifica si el botón está presionado (nivel bajo)
+            output_high(LED); // Si el botón está presionado, enciende el LED
+        } else {
+            output_low(LED); // Si el botón no está presionado, apaga el LED
+        }
+    }
+}
+
+

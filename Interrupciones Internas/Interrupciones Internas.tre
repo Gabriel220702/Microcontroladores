@@ -1,0 +1,5 @@
+ÀÄInterrupciones Internas
+   ÃÄmain  0/60  Ram=0
+   ³  ÀÄ@cinit1  (Inline)  Ram=0
+   ÃÄTIMER1_isr  0/10  Ram=0
+   ÀÄTIMER3_isr  0/10  Ram=0

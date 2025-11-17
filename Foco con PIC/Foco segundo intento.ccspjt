@@ -1,0 +1,33 @@
+[PROJECT]
+Target=Foco segundo intento.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Foco segundo intento.c
+[Foco segundo intento.c]
+Type=4
+[mru-list]
+1=Foco segundo intento.c
+
+[defines]
+buildcount=13
+
+[Opened Files]
+1=Foco segundo intento.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=Foco segundo intento (main)
+
+[ProjectLog]
+Days=1
+D1=05-03-2024
+D1_L=2
+D1_L1=[79558]Stopped Editing.
+TotalEdit=24
+TotalDebug=0
+D1_E=24
+D1_D=0
+D1_L2=[79558]Project Closed.

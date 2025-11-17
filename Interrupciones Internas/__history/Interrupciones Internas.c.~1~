@@ -1,0 +1,32 @@
+#include <Interrupciones Internas.h>
+
+#INT_TIMER1
+void  TIMER1_isr(void) 
+{
+
+}
+
+#INT_EXT
+void  EXT_isr(void) 
+{
+
+}
+
+void main()
+{
+   port_b_pullups(0xFF);
+	setup_timer_1(T1_INTERNAL|T1_DIV_BY_1);		//6.5 ms overflow
+
+
+	enable_interrupts(INT_TIMER1);
+	enable_interrupts(INT_EXT);
+	enable_interrupts(GLOBAL);
+
+	while(TRUE)
+	{
+
+
+		//TODO: User Code
+	}
+
+}

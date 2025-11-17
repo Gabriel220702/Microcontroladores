@@ -1,0 +1,66 @@
+CCS PCH C Compiler, Version 5.076, 56587               06-mar.-24 09:06
+
+               Filename:   F:\Foco con PIC\Foco con PIC.lst
+
+               ROM used:   34 bytes (0%)
+                           Largest free fragment is 32734
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0004
+.................... #include <18F4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #fuses XT, NOWDT, NOPROTECT, NOLVP 
+.................... #use delay(clock=4000000) 
+....................  
+.................... #define SSR_LED_PIN PIN_B0 
+....................  
+.................... void main() { 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  MOVF   FC1,W
+000A:  ANDLW  C0
+000C:  IORLW  0F
+000E:  MOVWF  FC1
+0010:  MOVLW  07
+0012:  MOVWF  FB4
+....................     set_tris_b(0x00); // Configura todos los pines del puerto B como salidas 
+0014:  MOVLW  00
+0016:  MOVWF  F93
+....................  
+....................     while(TRUE) { 
+....................         output_high(SSR_LED_PIN); // Enciende el LED y activa el SSR constantemente 
+0018:  BCF    F93.0
+001A:  BSF    F8A.0
+001C:  GOTO   0018
+....................         // Se elimina el ciclo de apagado y los retrasos, por lo que el pulso es constante. 
+....................     } 
+.................... } 
+....................  
+*
+0020:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C03F   PLL12 CPUDIV4 USBDIV XT FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

@@ -1,0 +1,76 @@
+[PROJECT]
+Target=Foco con PIC.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.076
+Compiler=PCH
+[Target Data]
+FileList=Foco con PIC.c
+[Foco con PIC.c]
+Type=4
+[mru-list]
+1=Foco con PIC.c
+
+[defines]
+buildcount=24
+
+[ProjectLog]
+Days=4
+D1=29-02-2024
+D1_L=8
+D1_L1=[67508]Stopped Editing.
+TotalEdit=17
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L2=[72390]Project Closed.
+D1_L3=[75344]Project Opened.
+D1_L4=[76545]Started Editing.
+D1_L5=[77071]Stopped Editing.
+D1_L6=[78577]Started Editing.
+D1_L7=[78650]Stopped Editing.
+D1_L8=[78650]Project Closed.
+D2=04-03-2024
+D2_L=10
+D2_L1=[47649]Project Opened.
+D2_L2=[54491]Project Closed.
+D2_L3=[64443]Project Opened.
+D2_L4=[64457]Started Editing.
+D2_L5=[64760]Stopped Editing.
+D2_L6=[65802]Started Editing.
+D2_L7=[66375]Stopped Editing.
+D2_L8=[68264]Started Editing.
+D2_L9=[68564]Stopped Editing.
+D2_E=5
+D2_D=0
+D2_L10=[72982]Project Closed.
+D3=05-03-2024
+D3_L=8
+D3_L1=[41269]Project Opened.
+D3_L2=[41457]Project Closed.
+D3_L3=[75862]Project Opened.
+D3_L4=[78092]Project Closed.
+D3_L5=[79575]Project Opened.
+D3_L6=[79586]Started Editing.
+D3_L7=[80209]Stopped Editing.
+D3_E=6
+D3_D=0
+D3_L8=[80277]Project Closed.
+D4=06-03-2024
+D4_L=4
+D4_L1=[30804]Project Opened.
+D4_L2=[30974]Project Closed.
+D4_L3=[32714]Project Opened.
+D4_L4=[33432]Project Closed.
+
+[fileformats]
+forcecoff=0
+
+[Opened Files]
+1=Foco con PIC.c
+t1=1
+Count=1
+2=..\Foco con pic16f877a\foco 877.c
+t2=1
+[Units]
+Count=1
+1=Foco con PIC (main)

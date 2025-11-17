@@ -1,0 +1,48 @@
+
+ROM used:   262/32768 (1%)
+            262/32768 (1%) including unused fragments
+
+            0.3 Average locations per line
+            21.8 Average locations per statement
+
+RAM used:   25/2048 (1%) at main() level
+            25/2048 (1%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   33    12 100  Interrupciones Internas.c
+  852     0   0  C:\Program Files (x86)\PICC\Devices\18F4550.h
+----- -----
+  885    12 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     60  11    0    197  2.3  main
+0     10   2    0     17  0.8  TIMER1_isr
+0     10   2    0     17  0.8  TIMER3_isr
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              12
+    Comments                165
+    Volume (V)              289
+    Difficulty (D)          4.2
+    Effort to implement (E) 1220
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    81
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000B8   178  0  
+000BA-07FFE    80  32502  
+
+
+

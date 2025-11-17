@@ -1,0 +1,21 @@
+#include <18F4550.h>
+#fuses HS, NOWDT, NOPROTECT, NOLVP
+#use delay(clock=4000000)
+
+#define SSR_LED_PIN PIN_B0
+#define BUTTON_PIN  PIN_B1
+
+void main() {
+    set_tris_b(0x01); // Configura el pin B0 como salida y el pin B1 como entrada
+
+    while(TRUE) {
+        output_high(SSR_LED_PIN); // Enciende el SSR
+
+        // Verifica el estado del botón
+        if(input(BUTTON_PIN) == 0) {
+            // Si el botón está presionado, apaga el SSR
+            output_low(SSR_LED_PIN);
+        }
+    }
+}
+

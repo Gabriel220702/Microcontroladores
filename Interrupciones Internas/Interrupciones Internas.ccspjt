@@ -1,0 +1,45 @@
+[PROJECT]
+Target=Interrupciones Internas.hex
+Processor_Text=PIC18F4550
+CCSVerions=5.076
+Compiler=PCH
+CCSVersion=5.076
+[Target Data]
+FileList=Interrupciones Internas.c
+[Directories]
+Include=
+[D:\Interrupciones Internas\Interrupciones Internas]
+Type=4
+[mru-list]
+1=Interrupciones Internas.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=27-04-2024
+D1_L=4
+D1_L1=[71102]Project Opened.
+D1_L2=[71114]Started Editing.
+D1_L3=[71743]Stopped Editing.
+TotalEdit=6
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L4=[74387]Project Closed.
+
+[Opened Files]
+1=Interrupciones Internas.c
+t1=1
+2=Interrupciones Internas.h
+t2=1
+Count=2
+[Interrupciones Internas.c]
+Type=4
+
+[defines]
+buildcount=4
+[Units]
+Count=1
+1=Interrupciones Internas (main)

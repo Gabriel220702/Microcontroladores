@@ -1,0 +1,32 @@
+#include <18F4550.h>
+#fuses NOWDT, PUT, BROWNOUT, NOLVP, NOCPD, NOPBADEN
+#use delay(clock=1000000)
+
+void main() {
+   setup_oscillator(OSC_1MHZ); // Configurar el oscilador a 1 MHz
+
+   setup_timer_1(T1_INTERNAL | T1_DIV_BY_8); // Timer1 para uso interno con prescaler 1:8
+   set_timer1(3036);                          // Establecer valor inicial para desbordamiento en ~1 segundo
+
+   setup_timer_3(T3_INTERNAL | T3_DIV_BY_8); // Timer3 para uso interno con prescaler 1:8
+   set_timer3(3036);                          // Establecer valor inicial para desbordamiento en ~1 segundo
+
+   enable_interrupts(INT_TIMER1); // Habilitar interrupciones de Timer1
+   enable_interrupts(INT_TIMER3); // Habilitar interrupciones de Timer3
+   enable_interrupts(GLOBAL);      // Habilitar todas las interrupciones
+
+   while(TRUE) {
+       // El bucle principal se mantiene vacío; el trabajo se realiza en las ISR
+   }
+}
+
+#INT_TIMER1
+void TIMER1_isr() {
+   output_toggle(PIN_A0); // Alternar el estado del LED conectado a RA0
+}
+
+#INT_TIMER3
+void TIMER3_isr() {
+   output_toggle(PIN_A1); // Alternar el estado del LED conectado a RA1
+}
+
