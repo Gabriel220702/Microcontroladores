@@ -1,0 +1,30 @@
+#include <16f877a.h>                                  //Seleccionamos el pic con el que trabajaremos
+#fuses XT, NOWDT, NOPUT, NOLVP, NOPROTECT, BROWNOUT   //Configuración de fusibles
+#use delay(clock=4M)                                 //Configuracion de frecuencia del oscilador
+#use standard_io(B)
+
+
+#INT_TIMER1                                           //Habilitación del TMR1
+void timer1_interrupcion()                            //Ciclo del TMR1
+{
+   output_toggle(PIN_B0);                             //Encender y apagar led automaticamente
+   set_timer1(53036);                                 //Cada 100ms
+}
+
+void main()
+{
+  set_tris_c(0xFF);
+  setup_timer_1(T1_INTERNAL | T1_DIV_BY_8);          //Configuracion del TMR1
+  enable_interrupts(INT_TIMER1);                     //Habilitación del TMR1
+  enable_interrupts(GLOBAL);                         //Se habilitan las interrupciones globales
+  set_timer1(53036);                                 //Establecer timer1 para 100ms
+  output_high(PIN_B0);                               //Encender PIN RB0
+  
+  while(true)
+  {
+  output_high(PIN_B1);
+  delay_ms(500);
+  output_low(PIN_B1);
+  delay_ms(500);
+  }
+}

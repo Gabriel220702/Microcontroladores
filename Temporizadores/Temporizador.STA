@@ -1,0 +1,47 @@
+
+ROM used:   250/32768 (1%)
+            250/32768 (1%) including unused fragments
+
+            0.3 Average locations per line
+            15.6 Average locations per statement
+
+RAM used:   26/2048 (1%) at main() level
+            27/2048 (1%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   40    16 100  Temporizador.c
+  789     0   0  C:\Program Files (x86)\PICC\Devices\18F2550.h
+----- -----
+  829    16 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     30   6    1    140  3.9  timer1_interrupcion
+0     50  10    0    141  2.2  MAIN
+ Inline         0    212  2.7  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              16
+    Comments                159
+    Volume (V)              660
+    Difficulty (D)          8.8
+    Effort to implement (E) 5840
+    Time to implement (T)   5 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    68
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000AC   166  0  
+000AE-07FFE    80  32514  
+
+
+

@@ -1,0 +1,5 @@
+ÀÄInterrupción por desbordamiento de Timer 1
+   ÃÄMAIN  0/60  Ram=0
+   ³  ÀÄ@cinit1  (Inline)  Ram=0
+   ÃÄtimer1_interrupcion  0/10  Ram=0
+   ÀÄtimer2_interrupcion  0/10  Ram=0

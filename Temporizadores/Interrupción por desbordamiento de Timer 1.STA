@@ -1,0 +1,48 @@
+
+ROM used:   262/32768 (1%)
+            262/32768 (1%) including unused fragments
+
+            0.3 Average locations per line
+            21.8 Average locations per statement
+
+RAM used:   25/2048 (1%) at main() level
+            25/2048 (1%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   37    12 100  Interrupción por desbordamiento de Timer 1.c
+  789     0   0  C:\Program Files (x86)\PICC\Devices\18F2550.h
+----- -----
+  826    12 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     10   2    0     17  0.8  timer1_interrupcion
+0     10   2    0     17  0.8  timer2_interrupcion
+0     60  11    0    212  2.7  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              12
+    Comments                159
+    Volume (V)              304
+    Difficulty (D)          4.6
+    Effort to implement (E) 1412
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    76
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000B8   178  0  
+000BA-07FFE    80  32502  
+
+
+

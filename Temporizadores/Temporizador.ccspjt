@@ -1,0 +1,61 @@
+[PROJECT]
+Target=Temporizador.hex
+Processor_Text=PIC18F2550
+CCSVerions=5.076
+Compiler=PCH
+CCSVersion=5.076
+[Target Data]
+FileList=Temporizador.c
+[Directories]
+Include=
+[D:\Temporizadores\Temporizador]
+Type=4
+[mru-list]
+1=Temporizador.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=10-05-2024
+D1_L=18
+D1_L1=[41207]Project Opened.
+D1_L2=[41277]Started Editing.
+D1_L3=[41780]Stopped Editing.
+D1_L4=[41823]Started Editing.
+D1_L5=[42302]Stopped Editing.
+D1_L6=[42347]Started Editing.
+D1_L7=[42965]Stopped Editing.
+D1_L8=[43027]Started Editing.
+D1_L9=[43328]Stopped Editing.
+D1_L10=[43429]Started Editing.
+D1_L11=[43812]Stopped Editing.
+D1_L12=[44373]Started Editing.
+D1_L13=[44673]Stopped Editing.
+D1_L14=[45102]Started Editing.
+D1_L15=[45403]Stopped Editing.
+D1_L16=[45452]Started Editing.
+D1_L17=[45752]Stopped Editing.
+TotalEdit=14
+TotalDebug=0
+D1_E=14
+D1_D=0
+D1_L18=[45807]Project Closed.
+
+[Opened Files]
+1=Temporizador.c
+t1=7
+2=Temporizador.h
+t2=1
+3=Interrupción por desbordamiento de Timer 1.c
+t3=1
+Count=1
+[Temporizador.c]
+Type=4
+
+[defines]
+buildcount=13
+[Units]
+Count=1
+1=Temporizador (main)

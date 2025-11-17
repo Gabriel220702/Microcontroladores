@@ -1,0 +1,78 @@
+#include <Temporizador.h>
+
+#INT_RTCC
+void  RTCC_isr(void) 
+{
+
+}
+
+#INT_TIMER0
+void  TIMER0_isr(void) 
+{
+
+}
+
+#INT_TIMER1
+void  TIMER1_isr(void) 
+{
+
+}
+
+#INT_TIMER2
+void  TIMER2_isr(void) 
+{
+
+}
+
+#INT_TIMER3
+void  TIMER3_isr(void) 
+{
+
+}
+
+#INT_EXT
+void  EXT_isr(void) 
+{
+
+}
+
+#INT_EXT1
+void  EXT1_isr(void) 
+{
+
+}
+
+#INT_EXT2
+void  EXT2_isr(void) 
+{
+
+}
+
+void main()
+{
+   port_b_pullups(0xFF);
+	setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1|RTCC_8_BIT);		//25.6 us overflow
+	setup_timer_1(T1_INTERNAL|T1_DIV_BY_1);		//6.5 ms overflow
+	setup_timer_2(T2_DIV_BY_1,0,1);		//0.1 us overflow, 0.1 us interrupt
+
+	setup_timer_3(T3_INTERNAL | T3_DIV_BY_1);
+
+
+	enable_interrupts(INT_RTCC);
+	enable_interrupts(INT_TIMER0);
+	enable_interrupts(INT_TIMER1);
+	enable_interrupts(INT_TIMER2);
+	enable_interrupts(INT_TIMER3);
+	enable_interrupts(INT_EXT);
+	enable_interrupts(INT_EXT1);
+	enable_interrupts(INT_EXT2);
+	enable_interrupts(GLOBAL);
+
+	while(TRUE)
+	{
+
+
+		//TODO: User Code
+	}
+
+}

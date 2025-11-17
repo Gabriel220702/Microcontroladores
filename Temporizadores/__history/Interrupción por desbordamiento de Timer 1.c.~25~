@@ -1,0 +1,36 @@
+#include <18F2550.h>
+#fuses XT, NOWDT, NOPUT, NOLVP, NOPROTECT, BROWNOUT
+#use delay(clock=4M)
+#use standard_io(B)
+
+// Interrupt handler for TMR1
+#INT_TIMER1
+void timer1_isr() {
+   output_toggle(PIN_B0); // Toggle LED connected to RB0 every 500 ms
+}
+
+// Interrupt handler for TMR2
+#INT_TIMER2
+void timer2_isr() {
+   output_toggle(PIN_B1); // Toggle LED connected to RB1 every 1 second
+}
+
+void main() {
+  set_tris_b(0x00); // Configure all pins of port B as output
+
+  // Setup TMR1 to generate an interrupt every 500 ms
+  setup_timer_1(T1_INTERNAL | T1_DIV_BY_8);
+  set_timer1(3036); // Timer1 preload to count 500 ms
+
+  // Setup TMR2 to generate an interrupt every 1 second
+  setup_timer_2(T2_DIV_BY_16, 125, 16); // T2_DIV_BY_16, period 125, postscaler 16
+
+  enable_interrupts(INT_TIMER1); // Enable Timer1 interrupt
+  enable_interrupts(INT_TIMER2); // Enable Timer2 interrupt
+  enable_interrupts(GLOBAL);    // Enable global interrupts
+
+  while(TRUE) {
+    // Main loop does nothing. LED toggling is handled by interrupts.
+  }
+}
+

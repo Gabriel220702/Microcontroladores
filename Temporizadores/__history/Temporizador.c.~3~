@@ -1,0 +1,36 @@
+#include <18F2550.h>
+#fuses XT, NOWDT, NOPUT, NOLVP, NOPROTECT, BROWNOUT
+#use delay(clock=40M)
+#use standard_io(B)
+
+#INT_TIMER1
+void timer1_interrupcion() {
+   output_toggle(PIN_B0); // Alternar estado del primer LED cada 0.5 segundos
+}
+
+#INT_TIMER2
+void timer2_interrupcion() {
+   output_toggle(PIN_B1); // Alternar estado del segundo LED cada 1 segundo
+}
+
+void main() {
+  set_tris_b(0x00); // Configurar B0 y B1 como salidas
+
+  // Configurar Timer1 para 0.5 segundos
+  setup_timer_1(T1_INTERNAL | T1_DIV_BY_8);
+  set_timer1(1000000); // Carga para contar 0.5 segundos
+
+  // Configurar Timer2 para 1 segundo
+  setup_timer_2(T2_DIV_BY_16, 250, 16); // Periodo 250, Postscaler 16
+
+  enable_interrupts(INT_TIMER1); // Habilitar interrupción de Timer1
+  enable_interrupts(INT_TIMER2); // Habilitar interrupción de Timer2
+  enable_interrupts(GLOBAL);    // Habilitar todas las interrupciones globales
+
+  output_high(PIN_B0); // Encender PIN RB0 inicialmente
+
+  while(true) {
+    // El bucle principal está vacío; el parpadeo de los LEDs se maneja totalmente desde las interrupciones
+  }
+}
+
